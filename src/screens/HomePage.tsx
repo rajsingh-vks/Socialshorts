@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { View, FlatList, Dimensions, StatusBar, Text, TouchableOpacity, ScrollView } from 'react-native';
+import { View, FlatList, Dimensions, StatusBar, Text, TouchableOpacity, ScrollView, Platform } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import NewsCard from '../components/news/NewsCard';
 import dummyNews from '../components/common/dummyNews';
@@ -21,10 +22,12 @@ const HomePage = () => {
       <StatusBar barStyle="dark-content" backgroundColor="#f5f5f5" />
 
       {/* Header */}
-      <View style={{ paddingHorizontal: 20, paddingTop: 50, paddingBottom: 12, backgroundColor: '#f5f5f5' }}>
-        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#000' }}>SocialistShort<Text style={{ fontSize: 32, fontWeight: '300' }}>.</Text></Text>
-        <Text style={{ fontSize: 12, color: '#666', marginTop: 4, letterSpacing: 1 }}>60-SECOND BRIEFINGS</Text>
-      </View>
+      <SafeAreaView edges={['top']} style={{ backgroundColor: '#f5f5f5' }}>
+        <View style={{ paddingHorizontal: 20, paddingTop: Platform.OS === 'android' ? 12 : 10, paddingBottom: 15, backgroundColor: '#f5f5f5' }}>
+          <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#000' }}>SocialistShort<Text style={{ fontSize: 32, fontWeight: '300' }}>.</Text></Text>
+          <Text style={{ fontSize: 12, color: '#666', marginTop: 4, letterSpacing: 1 }}>600-SECOND BRIEFINGS</Text>
+        </View>
+      </SafeAreaView>
 
       {/* Category Filter */}
       <ScrollView

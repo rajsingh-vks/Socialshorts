@@ -5,6 +5,7 @@ import {
   ImageBackground,
   Dimensions,
   TouchableOpacity,
+  Platform,
 } from 'react-native';
 
 import LinearGradient from 'react-native-linear-gradient';
@@ -55,7 +56,7 @@ const NewsCard = ({ item }: { item: any }) => {
         </View>
 
         {/* Content Gradient */}
-        <View style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: 420 }}>
+        <View style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: CARD_HEIGHT * 0.55 }}>
           <LinearGradient
             colors={['transparent', 'rgba(255,255,255,0.75)', 'rgba(255,255,255,0.95)']}
             start={{ x: 0.5, y: 0 }}
@@ -66,7 +67,7 @@ const NewsCard = ({ item }: { item: any }) => {
               paddingTop: 20,
             }}
           >
-            <View style={{ paddingHorizontal: 20, paddingBottom: 80}}>
+            <View style={{ paddingHorizontal: 20, paddingBottom: Platform.OS === 'ios' ? 105 : 24 }}>
               {/* Title */}
               <Text
                 style={{
